@@ -24,7 +24,7 @@ class MigrateServiceProvider extends ServiceProvider
                 {
                     $databasePath = config('database.connections.sqlite.database');
 
-                    if ($databasePath === '') {
+                    if ($databasePath === '' || $databasePath === null) {
                         $databasePath = database_path('database.sqlite');
                     }
 
