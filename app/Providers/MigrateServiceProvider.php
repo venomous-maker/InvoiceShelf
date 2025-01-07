@@ -24,6 +24,10 @@ class MigrateServiceProvider extends ServiceProvider
                 {
                     $databasePath = config('database.connections.sqlite.database');
 
+                    if ($databasePath === '') {
+                        $databasePath = database_path('database.sqlite');
+                    }
+
                     if (!File::exists($databasePath) || $databasePath === ':memory:') {
                         $this->output->writeln("<error>SQLite database file not found at {$databasePath}</error>");
 
