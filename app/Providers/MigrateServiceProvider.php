@@ -20,7 +20,7 @@ class MigrateServiceProvider extends ServiceProvider
         // Override the migrate command
         $this->app->extend(MigrateCommand::class, function ($command, $app) {
             return new class($app['migrator'], $app['events']) extends MigrateCommand {
-                protected function execute(InputInterface $input, OutputInterface $output)
+                protected function execute(InputInterface $input, OutputInterface $output): int
                 {
                     $databasePath = config('database.connections.sqlite.database');
 
